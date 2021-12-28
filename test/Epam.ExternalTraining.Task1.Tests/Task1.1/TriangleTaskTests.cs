@@ -25,10 +25,12 @@ namespace Epam.ExternalTraining.Task1.Tests
 		public static IEnumerable<TestCaseData> Run_RegularNumbers_ShouldDrawTheTriangle_TestCases()
 		{
 			yield return new TestCaseData(1, "*");
-			yield return new TestCaseData(3, @"*
+			yield return new TestCaseData(3, AdjustLiteralStringForTests(@"
+*
 **
-***"); // TODO: different line endings
-			yield return new TestCaseData(15, @"*
+***"));
+			yield return new TestCaseData(15, AdjustLiteralStringForTests(@"
+*
 **
 ***
 ****
@@ -42,7 +44,7 @@ namespace Epam.ExternalTraining.Task1.Tests
 ************
 *************
 **************
-***************");
+***************"));
 
 		}
 

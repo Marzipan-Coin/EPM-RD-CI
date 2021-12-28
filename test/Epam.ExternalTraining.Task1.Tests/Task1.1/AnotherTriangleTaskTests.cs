@@ -22,11 +22,11 @@ namespace Epam.ExternalTraining.Task1.Tests
 		public static IEnumerable<TestCaseData> Run_RegularNumbers_ShouldDrawTheIsoscelesTriangle_TestCases()
 		{
 			yield return new TestCaseData(1, "*");
-			yield return new TestCaseData(3, @"
+			yield return new TestCaseData(3, AdjustLiteralStringForTests(@"
   *
  ***
-*****".TrimStart('\r', '\n')); // TODO: different line endings
-			yield return new TestCaseData(15, @"
+*****"));
+			yield return new TestCaseData(15, AdjustLiteralStringForTests(@"
               *
              ***
             *****
@@ -41,7 +41,7 @@ namespace Epam.ExternalTraining.Task1.Tests
    ***********************
   *************************
  ***************************
-*****************************".TrimStart('\r', '\n'));
+*****************************"));
 		}
 
 		[TestCaseSource(nameof(Run_RegularNumbers_ShouldDrawTheIsoscelesTriangle_TestCases))]

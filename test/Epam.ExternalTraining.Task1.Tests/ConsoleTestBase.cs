@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Epam.ExternalTraining.Task1.Tests
 {
@@ -23,6 +24,12 @@ namespace Epam.ExternalTraining.Task1.Tests
 			Console.SetOut(textWriter);
 
 			return textWriter.GetStringBuilder();
+		}
+
+		/// <summary> Removes first empty line and adjusts line breaks to the environment equivalent </summary>
+		protected static string AdjustLiteralStringForTests(string input)
+		{
+			return Regex.Replace(input.TrimStart('\r', '\n'), @"\r\n|\n", Environment.NewLine);
 		}
 	}
 }
