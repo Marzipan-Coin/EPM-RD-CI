@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Epam.ExternalTraining.Task1.Tests
 {
+	/// <summary> Task 1.1.1 - Rectangle (calculate area) </summary>
 	public class RectangleTaskTests
 	{
 		private IRectangleTask _rectangleTask;
@@ -41,7 +42,7 @@ namespace Epam.ExternalTraining.Task1.Tests
 		[TestCase(0, 2), TestCase(-1, 2)]
 		[TestCase(2, 0), TestCase(2, -254)]
 		[TestCase(0, 0), TestCase(-242743, 0)]
-		public void Run_Zero_ShouldWhat(int a, int b)
+		public void Run_ZeroOrNegative_ShouldWriteAnErrorMessage(int a, int b)
 		{
 			// Arrange
 			var consoleMock = new Mock<IConsole>(MockBehavior.Loose);
@@ -55,7 +56,6 @@ namespace Epam.ExternalTraining.Task1.Tests
 			_rectangleTask.Run(consoleMock.Object);
 
 			// Assert
-
 			consoleMock.Verify(
 				c => c.WriteLine(It.Is<string>(s => !Regex.IsMatch(s.Trim(), @"^-?\d+$"))), 
 				"Expected an error message about incorrect input");

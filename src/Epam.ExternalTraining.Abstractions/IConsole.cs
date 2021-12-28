@@ -6,8 +6,10 @@ namespace Epam.ExternalTraining.Abstractions
 	public interface IConsole
 	{
 		string ReadLine();
-		void WriteLine(string output);
 
-		// TODO: this can limit creativity (Write method doesn't exist)
+		void Write(string output);
+
+		void WriteLine();
+		void WriteLine(string output);
 	}
 }
