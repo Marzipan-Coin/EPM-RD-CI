@@ -1,32 +1,33 @@
 ﻿using Epam.ExternalTraining.Abstractions;
 using Epam.ExternalTraining.Abstractions.Task1_1;
+using System;
 
 namespace Epam.ExternalTraining.Task1.TheMagnificentTen
 {
 	public class TriangleTask : ITriangleTask
 	{
-		public void Run(IConsole console)
+		public void Run()
 		{
 			//throw new NotImplementedException(); // TODO: remove the task solution
 
-			if (!int.TryParse(console.ReadLine(), out var h) || h <= 0)
+			if (!int.TryParse(Console.ReadLine(), out var h) || h <= 0)
 			{
-				console.WriteLine("Number must be a positive number");
+				Console.WriteLine("Number must be a positive number");
 				return;
 			}
 
 			// Solution 1 
 			//for (int i = 1; i <= h; i++)
-			//	console.WriteLine(new string('*', i));
+			//	Console.WriteLine(new string('*', i));
 
 			// Solution 2
 			//for (int i = 1; i <= h; i++)
 			//{
 			//	for (int width = 0; width < i; width++)
 			//	{
-			//		console.Write("*");
+			//		Console.Write("*");
 			//	}
-			//	console.WriteLine();
+			//	Console.WriteLine();
 			//}
 
 			// Solution 3 (char)
@@ -34,9 +35,9 @@ namespace Epam.ExternalTraining.Task1.TheMagnificentTen
 			{
 				for (int width = 0; width < i; width++)
 				{
-					console.Write("*");
+					Console.Write("*");
 				}
-				console.WriteLine();
+				Console.WriteLine();
 			}
 		}
 	}

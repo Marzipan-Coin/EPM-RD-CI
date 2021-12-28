@@ -1,6 +1,7 @@
 using Epam.ExternalTraining.Abstractions;
 using Epam.ExternalTraining.Abstractions.Task1_1;
 using Epam.ExternalTraining.Task1.TheMagnificentTen;
+using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -9,7 +10,7 @@ using System.Text.RegularExpressions;
 namespace Epam.ExternalTraining.Task1.Tests
 {
 	/// <summary> Task 1.1.1 - Rectangle (calculate area) </summary>
-	public class RectangleTaskTests
+	public class RectangleTaskTests : ConsoleTestBase
 	{
 		private IRectangleTask _rectangleTask;
 
@@ -25,18 +26,15 @@ namespace Epam.ExternalTraining.Task1.Tests
 		public void Run_RegularNumbers_ShouldWriteTheAreaResult(int a, int b, int expectedResult)
 		{
 			// Arrange
-			var consoleMock = new Mock<IConsole>(MockBehavior.Loose);
+			SetConsoleInput(a.ToString(), b.ToString());
 
-			consoleMock.SetupSequence(c => c.ReadLine())
-				.Returns(a.ToString())
-				.Returns(b.ToString())
-				.Throws(new Exception("Unexpected call to ReadLine"));
+			var output = BindConsoleOutput();
 
 			// Act
-			_rectangleTask.Run(consoleMock.Object);
+			_rectangleTask.Run();
 
 			// Assert
-			consoleMock.Verify(c => c.WriteLine(expectedResult.ToString()), "Expected to get a call with rectangle's area"); 
+			output.ToString().Trim().Should().Be(expectedResult.ToString(), "with the correct input, a number is expected");
 		}
 
 		[TestCase(0, 2), TestCase(-1, 2)]
@@ -45,20 +43,15 @@ namespace Epam.ExternalTraining.Task1.Tests
 		public void Run_ZeroOrNegative_ShouldWriteAnErrorMessage(int a, int b)
 		{
 			// Arrange
-			var consoleMock = new Mock<IConsole>(MockBehavior.Loose);
+			SetConsoleInput(a.ToString(), b.ToString());
 
-			consoleMock.SetupSequence(c => c.ReadLine())
-				.Returns(a.ToString())
-				.Returns(b.ToString())
-				.Throws(new Exception("Unexpected call to ReadLine"));
+			var output = BindConsoleOutput();
 
 			// Act
-			_rectangleTask.Run(consoleMock.Object);
+			_rectangleTask.Run();
 
 			// Assert
-			consoleMock.Verify(
-				c => c.WriteLine(It.Is<string>(s => !Regex.IsMatch(s.Trim(), @"^-?\d+$"))), 
-				"Expected an error message about incorrect input");
+			output.ToString().Trim().Should().NotMatchRegex(@"^-?\d+$", "with incorrect input, an error is expected");
 		}
 
 	}

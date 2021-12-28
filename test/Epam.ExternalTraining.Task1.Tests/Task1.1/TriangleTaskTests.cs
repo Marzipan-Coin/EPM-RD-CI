@@ -5,11 +5,10 @@ using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Epam.ExternalTraining.Task1.Tests
 {
-	public class TriangleTaskTests
+	public class TriangleTaskTests : ConsoleTestBase
 	{
 		private ITriangleTask _triangleTask;
 
@@ -50,20 +49,14 @@ namespace Epam.ExternalTraining.Task1.Tests
 		public void Run_RegularNumbers_ShouldDrawTheTriangle(int n, string expectedResult)
 		{
 			// Arrange
-			var consoleMock = new Mock<IConsole>(MockBehavior.Loose);
-
-			consoleMock.Setup(c => c.ReadLine()).Returns(n.ToString());
-
-			var textWriter = new StringWriter();
-			consoleMock.Setup(c => c.WriteLine()).Callback(() => textWriter.WriteLine());
-			consoleMock.Setup(c => c.WriteLine(It.IsAny<string>())).Callback<string>((arg) => textWriter.WriteLine(arg));
-			consoleMock.Setup(c => c.Write(It.IsAny<string>())).Callback<string>((arg) => textWriter.Write(arg));
+			SetConsoleInput(n.ToString());
+			var outputSb = BindConsoleOutput();
 
 			// Act
-			_triangleTask.Run(consoleMock.Object);
+			_triangleTask.Run();
 
 			// Assert
-			textWriter.GetStringBuilder().ToString().Trim().Should().Be(expectedResult);
+			outputSb.ToString().Trim().Should().Be(expectedResult);
 		}
 	}
 }
