@@ -10,6 +10,8 @@ namespace Epam.ExternalTraining.Task1.TheMagnificentTen
 		{
 			//throw new NotImplementedException(); // TODO: remove the task solution
 
+			Console.Write("Enter your credit card number: ");
+
 			if (!int.TryParse(Console.ReadLine(), out var a) || a <= 0
 				|| !int.TryParse(Console.ReadLine(), out var b) || b <= 0)
 			{

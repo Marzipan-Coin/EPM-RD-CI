@@ -28,13 +28,16 @@ namespace Epam.ExternalTraining.Task1.Tests
 			// Arrange
 			SetConsoleInput(a.ToString(), b.ToString());
 
-			var output = BindConsoleOutput();
+			var outputSb = BindConsoleOutput();
 
 			// Act
 			_rectangleTask.Run();
 
 			// Assert
-			output.ToString().Trim().Should().Be(expectedResult.ToString(), "with the correct input, a number is expected");
+			var output = outputSb.ToString().TrimEnd('\r', '\n');
+			_testOutput.WriteLine(output);
+
+			output.Should().EndWith(expectedResult.ToString(), "with the correct input, a number is expected");
 		}
 
 		[TestCase(0, 2), TestCase(-1, 2)]
@@ -45,13 +48,16 @@ namespace Epam.ExternalTraining.Task1.Tests
 			// Arrange
 			SetConsoleInput(a.ToString(), b.ToString());
 
-			var output = BindConsoleOutput();
+			var outputSb = BindConsoleOutput();
 
 			// Act
 			_rectangleTask.Run();
 
 			// Assert
-			output.ToString().Trim().Should().NotMatchRegex(@"^-?\d+$", "with incorrect input, an error is expected");
+			var output = outputSb.ToString().TrimEnd('\r', '\n');
+			_testOutput.WriteLine(output);
+
+			output.Should().NotMatchRegex(@"\n-?\d+$", "with incorrect input, an error is expected");
 		}
 
 	}

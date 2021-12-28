@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Epam.ExternalTraining.Task1.TheMagnificentTen;
+using System;
 
 namespace Epam.ExternalTraining.Task1
 {
@@ -6,7 +7,7 @@ namespace Epam.ExternalTraining.Task1
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			new AnotherTriangleTask().Run();
 		}
 	}
 }

@@ -5,6 +5,7 @@ using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Epam.ExternalTraining.Task1.Tests
 {
@@ -56,7 +57,10 @@ namespace Epam.ExternalTraining.Task1.Tests
 			_triangleTask.Run();
 
 			// Assert
-			outputSb.ToString().Trim().Should().Be(expectedResult);
+			var output = outputSb.ToString().TrimEnd('\r', '\n');
+			_testOutput.WriteLine(output);
+
+			output.Should().EndWith(expectedResult);
 		}
 	}
 }
