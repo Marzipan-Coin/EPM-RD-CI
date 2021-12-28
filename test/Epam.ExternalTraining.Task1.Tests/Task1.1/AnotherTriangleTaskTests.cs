@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace Epam.ExternalTraining.Task1.Tests
 {
+	/// <summary> Task 1.1.3 - Another triangle (isosceles triangle) </summary>
 	public class AnotherTriangleTaskTests : ConsoleTestBase
 	{
 		private IAnotherTriangleTask _anotherTriangleTask;

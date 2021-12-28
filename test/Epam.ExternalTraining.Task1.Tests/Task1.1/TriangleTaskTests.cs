@@ -9,6 +9,7 @@ using System.Diagnostics;
 
 namespace Epam.ExternalTraining.Task1.Tests
 {
+	/// <summary> Task 1.1.2 - Triangles (lines with increasing length) </summary>
 	public class TriangleTaskTests : ConsoleTestBase
 	{
 		private ITriangleTask _triangleTask;

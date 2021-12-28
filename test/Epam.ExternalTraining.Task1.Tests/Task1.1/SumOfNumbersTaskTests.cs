@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Epam.ExternalTraining.Task1.Tests
 {
-	/// <summary> Task 1.1.5 - Sum of numbers (sum of numbers divisiblr by 3 and 5) </summary>
+	/// <summary> Task 1.1.5 - Sum of numbers (sum of numbers divisible by 3 and 5) </summary>
 	public class SumOfNumbersTaskTests : ConsoleTestBase
 	{
 		private ISumOfNumbersTask _sumOfNumbersTask;

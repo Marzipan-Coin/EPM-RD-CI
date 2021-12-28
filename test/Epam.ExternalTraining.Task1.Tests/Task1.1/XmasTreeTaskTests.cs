@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace Epam.ExternalTraining.Task1.Tests
 {
+	/// <summary> Task 1.1.4 - X-mas tree (a tree of triangles) </summary>
 	public class XmasTreeTaskTests : ConsoleTestBase
 	{
 		private IXmasTreeTask _xmasTreeTask;
