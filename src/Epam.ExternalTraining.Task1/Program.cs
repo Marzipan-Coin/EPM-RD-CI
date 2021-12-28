@@ -7,7 +7,7 @@ namespace Epam.ExternalTraining.Task1
 	{
 		static void Main(string[] args)
 		{
-			new XmasTreeTask().Run();
+			new SumOfNumbersTask().Run();
 		}
 	}
 }

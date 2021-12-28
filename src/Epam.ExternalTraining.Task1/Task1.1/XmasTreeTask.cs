@@ -19,7 +19,7 @@ namespace Epam.ExternalTraining.Task1.TheMagnificentTen
 			for (int triNum = 1; triNum <= h; triNum++)
 			for (int triLine = 0; triLine < triNum; triLine++)
 			{
-				Console.WriteLine(new string(' ', (h - triNum) + (h - triLine - 1)) + new string('*', 1 + triLine * 2));
+				Console.WriteLine(new string(' ', (h - triNum) + (triNum - triLine - 1)) + new string('*', 1 + triLine * 2));
 			}
 		}
 	}

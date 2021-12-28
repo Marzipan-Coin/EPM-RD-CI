@@ -59,6 +59,5 @@ namespace Epam.ExternalTraining.Task1.Tests
 
 			output.Should().NotMatchRegex(@"\n-?\d+$", "with incorrect input, an error is expected");
 		}
-
 	}
 }
