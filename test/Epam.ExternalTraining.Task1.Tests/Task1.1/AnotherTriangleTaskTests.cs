@@ -41,12 +41,11 @@ namespace Epam.ExternalTraining.Task1.Tests
   *************************
  ***************************
 *****************************".TrimStart('\r', '\n'));
-
 		}
 
 		[TestCaseSource(nameof(Run_RegularNumbers_ShouldDrawTheIsoscelesTriangle_TestCases))]
 		#endregion
-		public void Run_RegularNumbers_ShouldDrawTheTriangle(int n, string expectedResult)
+		public void Run_RegularNumbers_ShouldDrawTheIsoscelesTriangle(int n, string expectedResult)
 		{
 			// Arrange
 			SetConsoleInput(n.ToString());

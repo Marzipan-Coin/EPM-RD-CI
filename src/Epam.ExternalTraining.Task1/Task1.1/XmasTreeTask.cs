@@ -3,7 +3,7 @@ using System;
 
 namespace Epam.ExternalTraining.Task1.TheMagnificentTen
 {
-	public class AnotherTriangleTask : IAnotherTriangleTask
+	public class XmasTreeTask : IXmasTreeTask
 	{
 		public void Run()
 		{
@@ -16,9 +16,10 @@ namespace Epam.ExternalTraining.Task1.TheMagnificentTen
 			}
 
 			// Solution 1 
-			for (int i = 0; i < h; i++)
+			for (int triNum = 1; triNum <= h; triNum++)
+			for (int triLine = 0; triLine < triNum; triLine++)
 			{
-				Console.WriteLine(new string(' ', h - i - 1) + new string('*', 1 + i * 2));
+				Console.WriteLine(new string(' ', (h - triNum) + (h - triLine - 1)) + new string('*', 1 + triLine * 2));
 			}
 		}
 	}
